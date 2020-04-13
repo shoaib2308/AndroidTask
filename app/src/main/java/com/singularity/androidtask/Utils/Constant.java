@@ -11,7 +11,9 @@ public class Constant {
 
     public static final String BASE_URL = "https://api.snglty.com/";
 
-    /* Get Unix Time */
+    /*
+    Get Unix Time
+    */
     public static String getUnixTimeStamp() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis() / 1000L);
         long unixTime1 = timestamp.getTime();
@@ -19,7 +21,9 @@ public class Constant {
         return unixTime;
     }
 
-    /* Check internet conncetion available or not */
+    /*
+    Check internet conncetion available or not
+    */
     public static boolean isConnected(Context context) {
         boolean connected = false;
         try {
@@ -32,5 +36,6 @@ public class Constant {
         }
         return connected;
     }
+
 
 }

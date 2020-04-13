@@ -26,7 +26,9 @@ public class LockDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_details);
 
-        /* getting room id from adapter */
+        /**
+         * Getting roomid from adapter
+         */
         Intent i = getIntent();
         roomid = i.getIntExtra("roomid", -1);
 
@@ -34,9 +36,11 @@ public class LockDetailsActivity extends AppCompatActivity {
         tv_name = findViewById(R.id.tv_name);
         tv_status = findViewById(R.id.tv_status);
 
-        // Check Internet Connection
+        /**
+         * Check Internet Connection available or not
+         */
         if (Constant.isConnected(LockDetailsActivity.this)) {
-            getLockDetails(roomid, Constant.getUnixTimeStamp()); /* Calling the method to get Lock Details */
+            getLockDetails(roomid, Constant.getUnixTimeStamp());   /* Calling the method to get Lock Details */
         } else {
             Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
         }

@@ -1,7 +1,6 @@
 package com.singularity.androidtask.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 
 import com.singularity.androidtask.Model.Datum;
 import com.singularity.androidtask.R;
-import com.singularity.androidtask.View.LockDetailsActivity;
+import com.singularity.androidtask.Utils.onClickInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +22,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
     Context context;
     TextView tv_org, tv_property, tv_room;
     LinearLayout linearLayout;
+    onClickInterface onClickInterface;
 
-    public Adapter(Context context, List<Datum> dataListResponse) {
+    public Adapter(Context context, List<Datum> dataListResponse, onClickInterface onClickInterface) {
         this.roomListResponse = dataListResponse;
         this.context = context;
+        this.onClickInterface = onClickInterface;
     }
 
     @NonNull
     @Override
     public Adapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_layout, parent, false);
-        Viewholder viewholder = new Viewholder(view); // pass the view to View Holder
+        Viewholder viewholder = new Viewholder(view); // Pass the view to View Holder
         return viewholder;
     }
 
@@ -46,9 +47,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, LockDetailsActivity.class);
-                i.putExtra("roomid", roomslist.getRoom().getId());
-                context.startActivity(i);
+                onClickInterface.setonClick(roomslist.getRoom().getId());
             }
         });
     }

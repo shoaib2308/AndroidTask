@@ -16,7 +16,8 @@
             android:name=".View.LockDetailsActivity"
             android:label="Lock Details"
             android:parentActivityName=".View.FetchRoomListActivity" />
-        <activity android:name=".View.FetchRoomListActivity">
+        <activity android:name=".View.FetchRoomListActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
