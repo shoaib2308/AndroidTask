@@ -2,6 +2,7 @@ package com.singularity.androidtask.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.singularity.androidtask.Utils.ApiClient;
 import com.singularity.androidtask.Utils.Constant;
 import com.singularity.androidtask.Utils.IRestService;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +22,7 @@ public class LockDetailsActivity extends AppCompatActivity {
     IRestService iRestService;
     TextView tv_mac, tv_name, tv_status;
     int roomid;
-
+    int val_roomId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class LockDetailsActivity extends AppCompatActivity {
          */
         Intent i = getIntent();
         roomid = i.getIntExtra("roomid", -1);
+        val_roomId = roomid;
 
         tv_mac = findViewById(R.id.tv_mac);
         tv_name = findViewById(R.id.tv_name);
@@ -63,5 +66,12 @@ public class LockDetailsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
     }
 }

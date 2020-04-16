@@ -2,6 +2,7 @@ package com.singularity.androidtask.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.singularity.androidtask.Adapter.Adapter;
@@ -70,6 +71,7 @@ public class FetchRoomListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MainDataResponse> call, Response<MainDataResponse> response) {
                 if (!response.body().getSuccess().toString().isEmpty()) {
+                    Log.d("data",response.body().toString());
                     roomListResponse.addAll(response.body().getData());
                     roomListAdapter.notifyDataSetChanged();
                 } else {
